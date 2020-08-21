@@ -20,7 +20,7 @@ start.isStart = true
 end.isEnd = true
 
 //
-for(let i = 0; i < 7; i++){
+for(let i = 0; i < 25; i++){
 	const obstacle = addObstacle(matrix, [start, end])
 	for(let x = Math.min(obstacle.start.x, obstacle.end.x); x < Math.max(obstacle.start.x, obstacle.end.x); x++) {
 		for(let y = Math.min(obstacle.start.y, obstacle.end.y); y < Math.max(obstacle.start.y, obstacle.end.y); y++) {
@@ -39,6 +39,11 @@ if(path) {
 			await new Promise(resolve => setTimeout(resolve, 8))
 		}
 	}()
+} else {
+	drawMatrix(context, matrix)
+	const p = document.createElement('p')
+	p.innerText = 'Unsolvable'
+	document.body.appendChild(p)
 }
 
 /**
@@ -115,10 +120,10 @@ function addObstacle(matrix, exclusions) {
 		area(start, end) < 10
 		|| area(start, end) > 100
 		|| exclusions.find(cell => 
-			cell.x > Math.min(start.x, end.x)
-			&& cell.x < Math.max(start.x, end.x)
-			&& cell.y > Math.min(start.y, end.y)
-			&& cell.y < Math.max(start.y, end.x)
+			cell.x >= Math.min(start.x, end.x)
+			&& cell.x <= Math.max(start.x, end.x)
+			&& cell.y >= Math.min(start.y, end.y)
+			&& cell.y <= Math.max(start.y, end.y)
 		)
 	)
 

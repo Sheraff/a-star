@@ -103,7 +103,7 @@ function aStar(matrix, start, goal, h, d) {
 				if (newFScore < fScore.get(lowestFScore))
 					lowestFScore = neighbor
 
-				if (!openSet.has(neighbor))
+				if (!openSet.has(neighbor) && newFScore < Infinity)
 					openSet.add(neighbor)
 			}
 		}

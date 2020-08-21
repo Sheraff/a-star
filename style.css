@@ -1,0 +1,12 @@
+html, body {
+	margin: 0;
+}
+
+canvas {
+	width: 100vmin;
+	object-fit: contain;
+}
+
+p {
+	color: red;
+}
